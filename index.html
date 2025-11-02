@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SyncPay - Automatically reconcile bank payments with Harvest invoices for Canadian freelancers and consultants">
+    <title>SyncPay - Stop Wasting Hours Matching Payments to Harvest Invoices</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">💳</span>
+                    <span class="logo-text">SyncPay</span>
+                    <span class="canada-flag">🇨🇦</span>
+                </div>
+                <div class="language-toggle">
+                    <a href="index.html" class="lang-btn active" data-lang="en">EN</a>
+                    <span class="lang-divider">|</span>
+                    <a href="index-fr.html" class="lang-btn" data-lang="fr">FR</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Stop Wasting Hours Matching Payments to Harvest Invoices</h1>
+                <p class="hero-subtitle">Automatically reconcile bank payments with your Harvest invoices in seconds. Built for Canadian freelancers and consultants who want their time back.</p>
+
+                <form class="hero-form" id="heroForm">
+                    <div class="form-group-inline">
+                        <input type="email" id="heroEmail" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Join the Waitlist</button>
+                    </div>
+                    <p class="form-note">Trusted by Canadian freelancers • Works with all Canadian banks • English & français</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problems">
+        <div class="container">
+            <h2 class="section-title fade-in">You're Losing Billable Hours on Bookkeeping</h2>
+            <p class="section-subtitle fade-in">Sound familiar?</p>
+            <div class="problems-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">📥</div>
+                    <h3>Hunting for Matches</h3>
+                    <p>Downloading bank statements and hunting for which payment matches which invoice.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">🔍</div>
+                    <h3>Name Mismatches</h3>
+                    <p>Cross-referencing client names that don't match between your bank and Harvest.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">🌙</div>
+                    <h3>Evening Reconciliation</h3>
+                    <p>Spending your evenings reconciling instead of doing actual work.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">😰</div>
+                    <h3>Constant Worry</h3>
+                    <p>Worrying you missed a payment or recorded something twice.</p>
+                </div>
+            </div>
+            <div class="testimonial-callout fade-in">
+                <p class="testimonial-text">"I was spending 3-4 hours every month just matching payments. It was soul-crushing."</p>
+                <p class="testimonial-author">— Marianne, Freelance Designer, Montreal</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title fade-in">Reconciliation on Autopilot</h2>
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Upload Your Bank Statement</h3>
+                        <p>Drop your CSV or PDF from any Canadian bank. One click.</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>We Match Everything</h3>
+                        <p>Our AI instantly matches payments to your Harvest invoices—even when names don't match perfectly.</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Review & Approve</h3>
+                        <p>See the matches, approve them, and you're done. 2 minutes instead of 2 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-list">
+                <div class="feature fade-in">
+                    <div class="feature-icon">✓</div>
+                    <span>Works with e-transfers, wire transfers, cheques, and cash deposits</span>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">✓</div>
+                    <span>Handles partial payments and multiple invoices</span>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">✓</div>
+                    <span>Flags unmatched transactions for your review</span>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">✓</div>
+                    <span>Available in English and French</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Teaser Section -->
+    <section class="pricing-teaser">
+        <div class="container">
+            <div class="pricing-content fade-in">
+                <h2 class="section-title">Simple, Fair Pricing</h2>
+                <p class="pricing-description">Pay only for what you use. Small percentage per invoice reconciled—no monthly fees, no surprises.</p>
+                <p class="pricing-offer">Early waitlist members get <strong>50% off for 6 months</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title fade-in">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>What if my bank statement format is weird?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We support all major Canadian banks (RBC, TD, Scotiabank, BMO, CIBC, Desjardins, and more). If we don't support yours yet, we'll add it.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>Is my financial data secure?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. Bank-level encryption, never stored permanently. We only read the data to make matches.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>What if I use QuickBooks or Xero too?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>This tool is specifically for Harvest users who don't use full accounting software. If you use QuickBooks/Xero, you probably don't need us.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>What about French support?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>L'application est entièrement disponible en français. Our AI understands French invoice descriptions and client names.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2>Stop Doing Reconciliation Manually</h2>
+                <p>Join 100+ Canadian freelancers on the waitlist. Get early access + 50% off.</p>
+
+                <form class="waitlist-form" id="waitlistForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="you@example.com">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="industry">What industry are you in? *</label>
+                            <select id="industry" name="industry" required>
+                                <option value="">Select your industry</option>
+                                <option value="consulting">Consulting</option>
+                                <option value="design">Design</option>
+                                <option value="development">Development</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="invoice-volume">How many Harvest invoices do you send per month? *</label>
+                            <select id="invoice-volume" name="invoice_volume" required>
+                                <option value="">Select volume</option>
+                                <option value="1-10">1-10</option>
+                                <option value="11-25">11-25</option>
+                                <option value="26-50">26-50</option>
+                                <option value="50+">50+</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>What payment types do you accept? *</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="payment_types" value="e-transfer">
+                                <span>E-transfer</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="payment_types" value="wire">
+                                <span>Wire transfer</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="payment_types" value="cheque">
+                                <span>Cheque</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="payment_types" value="cash">
+                                <span>Cash</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="payment_types" value="credit-card">
+                                <span>Credit card</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">Get Early Access</button>
+                    <p class="form-note">No credit card required. We'll email you when we launch.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-simple">
+                <div class="logo">
+                    <span class="logo-icon">💳</span>
+                    <span class="logo-text">SyncPay</span>
+                </div>
+                <p class="footer-tagline">&copy; 2025 SyncPay. Built in Canada for Canadians 🇨🇦 | Conçu au Canada pour les Canadiens</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script data-goatcounter="https://syncpay.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

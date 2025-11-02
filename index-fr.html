@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SyncPay - Réconciliez automatiquement vos paiements bancaires avec vos factures Harvest pour les travailleurs autonomes et consultants canadiens">
+    <title>SyncPay - Arrêtez de perdre des heures à associer vos paiements aux factures Harvest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">💳</span>
+                    <span class="logo-text">SyncPay</span>
+                    <span class="canada-flag">🇨🇦</span>
+                </div>
+                <div class="language-toggle">
+                    <a href="index.html" class="lang-btn" data-lang="en">EN</a>
+                    <span class="lang-divider">|</span>
+                    <a href="index-fr.html" class="lang-btn active" data-lang="fr">FR</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Arrêtez de perdre des heures à associer vos paiements aux factures Harvest</h1>
+                <p class="hero-subtitle">Réconciliez automatiquement vos paiements bancaires avec vos factures Harvest en quelques secondes. Conçu pour les travailleurs autonomes et consultants canadiens qui veulent récupérer leur temps.</p>
+
+                <form class="hero-form" id="heroForm">
+                    <div class="form-group-inline">
+                        <input type="email" id="heroEmail" placeholder="Entrez votre courriel" required>
+                        <button type="submit" class="btn btn-primary">Rejoindre la liste d'attente</button>
+                    </div>
+                    <p class="form-note">Utilisé par des travailleurs autonomes canadiens • Compatible avec toutes les banques canadiennes • English & français</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problems">
+        <div class="container">
+            <h2 class="section-title fade-in">Vous perdez des heures facturables sur la comptabilité</h2>
+            <p class="section-subtitle fade-in">Ça vous dit quelque chose ?</p>
+            <div class="problems-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">📥</div>
+                    <h3>Chercher les correspondances</h3>
+                    <p>Télécharger vos relevés bancaires et chercher quel paiement correspond à quelle facture.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">🔍</div>
+                    <h3>Noms incompatibles</h3>
+                    <p>Comparer des noms de clients qui ne correspondent pas entre votre banque et Harvest.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">🌙</div>
+                    <h3>Réconciliation en soirée</h3>
+                    <p>Passer vos soirées à réconcilier au lieu de travailler sur vos projets.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">😰</div>
+                    <h3>Inquiétude constante</h3>
+                    <p>Craindre d'avoir manqué un paiement ou enregistré quelque chose deux fois.</p>
+                </div>
+            </div>
+            <div class="testimonial-callout fade-in">
+                <p class="testimonial-text">« Je passais 3 à 4 heures chaque mois juste à associer les paiements. C'était décourageant. »</p>
+                <p class="testimonial-author">— Marianne, Designer indépendante, Montréal</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title fade-in">La réconciliation en pilote automatique</h2>
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Téléversez votre relevé bancaire</h3>
+                        <p>Déposez votre fichier CSV ou PDF de n'importe quelle banque canadienne. Un clic.</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>On associe tout</h3>
+                        <p>Notre IA associe instantanément les paiements à vos factures Harvest—même quand les noms ne correspondent pas parfaitement.</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Révisez et approuvez</h3>
+                        <p>Voyez les associations, approuvez-les, et c'est fait. 2 minutes au lieu de 2 heures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-list">
+                <div class="feature fade-in">
+                    <div class="feature-icon">✓</div>
+                    <span>Compatible avec les virements Interac, virements bancaires, chèques et dépôts en espèces</span>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">✓</div>
+                    <span>Gère les paiements partiels et les factures multiples</span>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">✓</div>
+                    <span>Signale les transactions non associées pour votre révision</span>
+                </div>
+                <div class="feature fade-in">
+                    <div class="feature-icon">✓</div>
+                    <span>Disponible en français et en anglais</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Teaser Section -->
+    <section class="pricing-teaser">
+        <div class="container">
+            <div class="pricing-content fade-in">
+                <h2 class="section-title">Tarification simple et équitable</h2>
+                <p class="pricing-description">Payez seulement ce que vous utilisez. Un petit pourcentage par facture réconciliée—pas de frais mensuels, pas de surprises.</p>
+                <p class="pricing-offer">Les premiers membres de la liste d'attente obtiennent <strong>50 % de rabais pendant 6 mois</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title fade-in">Foire aux questions</h2>
+            <div class="faq-list">
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>Et si le format de mon relevé bancaire est bizarre ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nous supportons toutes les grandes banques canadiennes (RBC, TD, Banque Scotia, BMO, CIBC, Desjardins, et plus). Si nous ne supportons pas la vôtre encore, nous l'ajouterons.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>Mes données financières sont-elles sécurisées ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolument. Cryptage de niveau bancaire, jamais stockées de façon permanente. Nous lisons seulement les données pour faire les associations.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>Et si j'utilise aussi QuickBooks ou Xero ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Cet outil est spécifiquement pour les utilisateurs de Harvest qui n'utilisent pas de logiciel comptable complet. Si vous utilisez QuickBooks/Xero, vous n'avez probablement pas besoin de nous.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>Qu'en est-il du support en français ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>L'application est entièrement disponible en français. Notre IA comprend les descriptions de factures et noms de clients en français.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>Combien de temps ça prend ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>La plupart des réconciliations se font en moins de 2 minutes. Plus vous avez de transactions, plus vous économisez de temps comparé à la méthode manuelle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2>Arrêtez de faire la réconciliation manuellement</h2>
+                <p>Rejoignez plus de 100 travailleurs autonomes canadiens sur la liste d'attente. Obtenez un accès anticipé + 50 % de rabais.</p>
+
+                <form class="waitlist-form" id="waitlistForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Courriel *</label>
+                            <input type="email" id="email" name="email" required placeholder="vous@exemple.com">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="industry">Dans quel domaine travaillez-vous ? *</label>
+                            <select id="industry" name="industry" required>
+                                <option value="">Sélectionnez votre domaine</option>
+                                <option value="consulting">Consultation</option>
+                                <option value="design">Design</option>
+                                <option value="development">Développement</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="accounting">Comptabilité</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="invoice-volume">Combien de factures Harvest envoyez-vous par mois ? *</label>
+                            <select id="invoice-volume" name="invoice_volume" required>
+                                <option value="">Sélectionnez le volume</option>
+                                <option value="1-10">1 à 10 factures</option>
+                                <option value="11-25">11 à 25 factures</option>
+                                <option value="26-50">26 à 50 factures</option>
+                                <option value="50+">Plus de 50 factures</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quels types de paiement acceptez-vous ? *</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="payment_types" value="interac">
+                                <span>Virement Interac</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="payment_types" value="wire">
+                                <span>Virement bancaire</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="payment_types" value="cheque">
+                                <span>Chèque</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="payment_types" value="cash">
+                                <span>Comptant</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="payment_types" value="credit-card">
+                                <span>Carte de crédit</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">Obtenir l'accès anticipé</button>
+                    <p class="form-note">Aucune carte de crédit requise. Nous vous enverrons un courriel lors du lancement.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-simple">
+                <div class="logo">
+                    <span class="logo-icon">💳</span>
+                    <span class="logo-text">SyncPay</span>
+                </div>
+                <p class="footer-tagline">&copy; 2025 SyncPay. Conçu au Canada pour les Canadiens 🇨🇦 | Built in Canada for Canadians</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script data-goatcounter="https://syncpay.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
