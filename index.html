@@ -20,6 +20,9 @@
                     <span class="logo-text">SyncPay</span>
                     <span class="canada-flag">🇨🇦</span>
                 </div>
+                <nav class="main-nav">
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                </nav>
                 <div class="language-toggle">
                     <a href="index.html" class="lang-btn active" data-lang="en">EN</a>
                     <span class="lang-divider">|</span>
@@ -36,13 +39,10 @@
                 <h1 class="hero-title">Stop Wasting Hours Matching Payments to Harvest Invoices</h1>
                 <p class="hero-subtitle">Automatically reconcile bank payments with your Harvest invoices in seconds. Built for Canadian freelancers and consultants who want their time back.</p>
 
-                <form class="hero-form" id="heroForm">
-                    <div class="form-group-inline">
-                        <input type="email" id="heroEmail" placeholder="Enter your email" required>
-                        <button type="submit" class="btn btn-primary">Join the Waitlist</button>
-                    </div>
-                    <p class="form-note">Trusted by Canadian freelancers • Works with all Canadian banks • English & français</p>
-                </form>
+                <div class="hero-cta">
+                    <a href="#cta" class="btn btn-primary btn">Join Waitlist</a>
+                    <p class="form-note">For Canadian freelancers by Canadian freelancers • Works with all Canadian banks • English & Français</p>
+                </div>
             </div>
         </div>
     </section>
@@ -135,17 +135,6 @@
         </div>
     </section>
 
-    <!-- Pricing Teaser Section -->
-    <section class="pricing-teaser">
-        <div class="container">
-            <div class="pricing-content fade-in">
-                <h2 class="section-title">Simple, Fair Pricing</h2>
-                <p class="pricing-description">Pay only for what you use. Small percentage per invoice reconciled—no monthly fees, no surprises.</p>
-                <p class="pricing-offer">Early waitlist members get <strong>50% off for 6 months</strong>.</p>
-            </div>
-        </div>
-    </section>
-
     <!-- FAQ Section -->
     <section class="faq">
         <div class="container">
@@ -175,7 +164,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>This tool is specifically for Harvest users who don't use full accounting software. If you use QuickBooks/Xero, you probably don't need us.</p>
+                        <p>This tool is specifically for Harvest users who don't use full accounting software. If you use QuickBooks/Xero, let us know.</p>
                     </div>
                 </div>
                 <div class="faq-item fade-in">
@@ -192,11 +181,11 @@
     </section>
 
     <!-- Final CTA Section -->
-    <section class="final-cta">
+    <section class="final-cta" id="cta">
         <div class="container">
             <div class="cta-content fade-in">
                 <h2>Stop Doing Reconciliation Manually</h2>
-                <p>Join 100+ Canadian freelancers on the waitlist. Get early access + 50% off.</p>
+                <!-- <p>Join 100+ Canadian freelancers on the waitlist. Get early access + 50% off.</p> -->
 
                 <form class="waitlist-form" id="waitlistForm">
                     <div class="form-row">
@@ -231,34 +220,33 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>What payment types do you accept? *</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="payment_types" value="e-transfer">
-                                <span>E-transfer</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="payment_types" value="wire">
-                                <span>Wire transfer</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="payment_types" value="cheque">
-                                <span>Cheque</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="payment_types" value="cash">
-                                <span>Cash</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="payment_types" value="credit-card">
-                                <span>Credit card</span>
-                            </label>
-                        </div>
-                    </div>
+                    <!-- <div class="form-group"> -->
+                    <!--     <label>What payment types do you accept? *</label> -->
+                    <!--     <div class="checkbox-group"> -->
+                    <!--         <label class="checkbox-label"> -->
+                    <!--             <input type="checkbox" name="payment_types" value="e-transfer"> -->
+                    <!--             <span>E-transfer</span> -->
+                    <!--         </label> -->
+                    <!--         <label class="checkbox-label"> -->
+                    <!--             <input type="checkbox" name="payment_types" value="wire"> -->
+                    <!--             <span>Wire transfer</span> -->
+                    <!--         </label> -->
+                    <!--         <label class="checkbox-label"> -->
+                    <!--             <input type="checkbox" name="payment_types" value="cheque"> -->
+                    <!--             <span>Cheque</span> -->
+                    <!--         </label> -->
+                    <!--         <label class="checkbox-label"> -->
+                    <!--             <input type="checkbox" name="payment_types" value="cash"> -->
+                    <!--             <span>Cash</span> -->
+                    <!--         </label> -->
+                    <!--         <label class="checkbox-label"> -->
+                    <!--             <input type="checkbox" name="payment_types" value="credit-card"> -->
+                    <!--             <span>Credit card</span> -->
+                    <!--         </label> -->
+                    <!--     </div> -->
+                    <!-- </div> -->
 
-                    <button type="submit" class="btn btn-primary btn-large">Get Early Access</button>
-                    <p class="form-note">No credit card required. We'll email you when we launch.</p>
+                    <button type="submit" class="btn btn-primary btn-large">Join Waitlist</button>
                 </form>
             </div>
         </div>

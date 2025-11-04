@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tarification SyncPay - Choisissez le plan parfait pour votre entreprise">
+    <title>Tarification - SyncPay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index-fr.html" class="logo" style="text-decoration: none;">
+                    <span class="logo-icon">💳</span>
+                    <span class="logo-text">SyncPay</span>
+                    <span class="canada-flag">🇨🇦</span>
+                </a>
+                <div class="language-toggle">
+                    <a href="pricing.html" class="lang-btn" data-lang="en">EN</a>
+                    <span class="lang-divider">|</span>
+                    <a href="pricing-fr.html" class="lang-btn active" data-lang="fr">FR</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pricing Hero Section -->
+    <section class="pricing-hero">
+        <div class="container">
+            <div class="pricing-hero-content fade-in">
+                <h1 class="pricing-hero-title">Tarification simple et transparente</h1>
+                <p class="pricing-hero-subtitle">Choisissez le plan qui correspond à votre entreprise. Commencez gratuitement, passez à la version supérieure à tout moment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Cards Section -->
+    <section class="pricing-cards-section">
+        <div class="container">
+            <div class="pricing-cards">
+
+                <!-- Starter Plan -->
+                <div class="pricing-card fade-in">
+                    <div class="pricing-card-header">
+                        <h3 class="pricing-tier-name">Débutant</h3>
+                        <p class="pricing-tier-description">Parfait pour commencer</p>
+                    </div>
+
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Jusqu'à 25 factures/mois</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Association automatique des paiements</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Support par courriel</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Imports CSV/PDF</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Rapports de base</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing-cta">
+                        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+                        <stripe-buy-button
+                          buy-button-id="buy_btn_1SP8RoRyPA3SAj59K8grOmfJ"
+                          publishable-key="pk_live_51SP47URyPA3SAj59xlW7AYgc2pBHXSDtoKcpnKp1qbhk60L40O0zMsJauWn6XX069YM8ifSZ3jrAJN8Cu4qxEVwp00eFSgMRWa"
+                        >
+                        </stripe-buy-button>
+                    </div>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card pricing-card-featured fade-in">
+                    <div class="pricing-badge">Le plus populaire</div>
+                    <div class="pricing-card-header">
+                        <h3 class="pricing-tier-name">Pro</h3>
+                        <p class="pricing-tier-description">Pour les entreprises en croissance</p>
+                    </div>
+
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <span class="feature-icon">✓</span>
+                            <span><strong>Factures illimitées</strong></span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Tout ce qui est inclus dans Débutant, plus :</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Support prioritaire</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Rapports et analyses avancés</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Support multi-devises</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Accès API</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="feature-icon">✓</span>
+                            <span>Formats d'export personnalisés</span>
+                        </div>
+                    </div>
+
+                    <div class="pricing-cta">
+                        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+                        <stripe-buy-button
+                          buy-button-id="buy_btn_1SP8TRRyPA3SAj59fzzSSasD"
+                          publishable-key="pk_live_51SP47URyPA3SAj59xlW7AYgc2pBHXSDtoKcpnKp1qbhk60L40O0zMsJauWn6XX069YM8ifSZ3jrAJN8Cu4qxEVwp00eFSgMRWa"
+                        >
+                        </stripe-buy-button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="pricing-faq">
+        <div class="container">
+            <h2 class="section-title fade-in">Questions fréquentes sur la tarification</h2>
+            <div class="faq-list">
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>Puis-je changer de plan plus tard ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oui ! Vous pouvez mettre à niveau ou rétrograder votre plan à tout moment. Les changements prennent effet immédiatement.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>Offrez-vous des remboursements ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nous offrons une garantie de remboursement de 30 jours. Si vous n'êtes pas satisfait, contactez-nous pour un remboursement complet.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>Quels modes de paiement acceptez-vous ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nous acceptons toutes les cartes de crédit principales (Visa, Mastercard, Amex) via Stripe. Le paiement est sécurisé et crypté.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        <span>Y a-t-il un essai gratuit ?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oui ! Tous les plans incluent un essai gratuit de 7 jours. Aucune carte de crédit requise pour commencer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-simple">
+                <div class="logo">
+                    <span class="logo-icon">💳</span>
+                    <span class="logo-text">SyncPay</span>
+                </div>
+                <p class="footer-tagline">&copy; 2025 SyncPay. Conçu au Canada pour les Canadiens 🇨🇦 | Built in Canada for Canadians</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script data-goatcounter="https://syncpay.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

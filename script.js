@@ -28,7 +28,8 @@ const faqItems = document.querySelectorAll('.faq-item');
 faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
 
-    question.addEventListener('click', () => {
+    if (question) {
+        question.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
 
         // Close all FAQ items
@@ -40,7 +41,8 @@ faqItems.forEach(item => {
         if (!isActive) {
             item.classList.add('active');
         }
-    });
+        });
+    }
 });
 
 // ===========================
@@ -50,75 +52,12 @@ faqItems.forEach(item => {
 // The active state is set in the HTML based on which page is loaded
 
 // ===========================
-// Hero Form Submission
-// ===========================
-const heroForm = document.getElementById('heroForm');
-const heroEmail = document.getElementById('heroEmail');
-
-heroForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const email = heroEmail.value.trim();
-
-    if (!isValidEmail(email)) {
-        showToast('Please enter a valid email address', 'error');
-        return;
-    }
-
-    // Detect language
-    const language = document.documentElement.lang || 'en';
-
-    // Create FormData for submission
-    const formData = new FormData();
-    formData.append('email', email);
-    formData.append('language', language);
-    formData.append('form_type', 'hero');
-    formData.append('timestamp', new Date().toISOString());
-
-    // Log to console for debugging
-    console.log('Hero Form Submission:', {
-        email: email,
-        language: language,
-        form_type: 'hero',
-        timestamp: new Date().toISOString()
-    });
-
-    // Submit to Formspree
-    try {
-        const response = await fetch('https://formspree.io/f/xnnolded', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-
-        if (response.ok) {
-            showToast('Thanks! Check your email for updates.');
-            heroEmail.value = '';
-
-            // Scroll to full waitlist form
-            setTimeout(() => {
-                document.querySelector('.final-cta').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-            }, 1000);
-        } else {
-            throw new Error('Form submission failed');
-        }
-    } catch (error) {
-        showToast('Something went wrong. Please try again.', 'error');
-        console.error('Hero form submission error:', error);
-    }
-});
-
-// ===========================
 // Waitlist Form Submission
 // ===========================
 const waitlistForm = document.getElementById('waitlistForm');
 
-waitlistForm.addEventListener('submit', async (e) => {
+if (waitlistForm) {
+    waitlistForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     // Get form data
@@ -173,9 +112,22 @@ waitlistForm.addEventListener('submit', async (e) => {
             }
         });
 
+      console.log('BOB: ', response)
+
         if (response.ok) {
-            showToast('Success! Welcome to the waitlist. Check your email.');
-            waitlistForm.reset();
+            // Save email and locale to localStorage for pricing page
+            localStorage.setItem('customerEmail', data.email);
+            localStorage.setItem('customerLocale', language);
+
+            // Navigate to pricing page based on language
+            const pricingPage = language === 'fr' ? 'pricing-fr.html' : 'pricing.html';
+
+            showToast('Success! Redirecting to pricing...');
+
+            // Redirect after short delay
+            setTimeout(() => {
+                window.location.href = pricingPage;
+            }, 1500);
         } else {
             throw new Error('Form submission failed');
         }
@@ -186,7 +138,8 @@ waitlistForm.addEventListener('submit', async (e) => {
         submitButton.textContent = originalButtonText;
         submitButton.disabled = false;
     }
-});
+    });
+}
 
 // ===========================
 // Helper Functions
@@ -266,86 +219,46 @@ function showToast(message, type = 'success') {
     }, 4000);
 }
 
-// ===========================
-// Smooth Scroll for Anchor Links
-// ===========================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
 
-        // Skip if it's just "#" or if target doesn't exist
-        if (href === '#' || !document.querySelector(href)) {
-            e.preventDefault();
-            return;
+
+// ===========================
+// Stripe Buy Button Configuration
+// ===========================
+
+// Configure Stripe buy buttons with customer email and locale from localStorage
+function configureStripeBuyButtons() {
+    // Get customer email from localStorage
+    const customerEmail = localStorage.getItem('customerEmail');
+
+    // Get locale from localStorage, or default to page language
+    const storedLocale = localStorage.getItem('customerLocale');
+    const pageLanguage = document.documentElement.lang || 'en';
+    const locale = storedLocale || pageLanguage;
+
+    // Find all stripe buy buttons
+    const buyButtons = document.querySelectorAll('stripe-buy-button');
+
+    buyButtons.forEach(button => {
+        // Set customer email if available
+        if (customerEmail && customerEmail.trim() !== '') {
+            button.setAttribute('customer-email', customerEmail);
+            console.log('Set customer email on buy button:', customerEmail);
         }
 
-        e.preventDefault();
-        document.querySelector(href).scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    });
-});
-
-// ===========================
-// Performance Optimization
-// ===========================
-
-// Lazy load images when they come into viewport (if you add images later)
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            }
-        });
-    });
-
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
+        // Set locale based on page language or stored preference
+        // Stripe supports 'en' and 'fr' among other locales
+        button.setAttribute('locale', locale);
+        console.log('Set locale on buy button:', locale);
     });
 }
 
-// ===========================
-// Analytics Helper (Optional)
-// ===========================
-
-// Track form interactions
-function trackEvent(eventName, eventData = {}) {
-    console.log('Event tracked:', eventName, eventData);
-
-    // Integration points for analytics platforms:
-    // Google Analytics: gtag('event', eventName, eventData);
-    // Plausible: plausible(eventName, { props: eventData });
-    // Mixpanel: mixpanel.track(eventName, eventData);
+// Run when DOM is fully loaded
+// Use a slight delay to ensure stripe-buy-button elements are rendered
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(configureStripeBuyButtons, 100);
+    });
+} else {
+    // DOM already loaded
+    setTimeout(configureStripeBuyButtons, 100);
 }
-
-// Track key events
-heroForm.addEventListener('focus', () => {
-    trackEvent('hero_email_focus');
-}, true);
-
-waitlistForm.addEventListener('focus', () => {
-    trackEvent('waitlist_form_focus');
-}, true);
-
-// ===========================
-// Console Welcome Message
-// ===========================
-console.log(
-    '%cSyncPay 🇨🇦',
-    'font-size: 24px; font-weight: bold; color: #2563eb;'
-);
-console.log(
-    '%cAutomating payment reconciliation for Canadian freelancers.',
-    'font-size: 14px; color: #64748b;'
-);
-console.log(
-    '%cInterested in our tech stack? We\'re hiring! Email us at careers@syncpay.ca',
-    'font-size: 12px; color: #10b981; margin-top: 10px;'
-);

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SyncPay - Reconcile your bank payments with Harvest invoices">
+    <title>Reconcile - SyncPay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .reconcile-container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .reconcile-container h1 {
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .reconcile-container p {
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .auth-status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .auth-status.success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            display: block;
+        }
+
+        .auth-status.error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">💳</span>
+                    <span class="logo-text">SyncPay</span>
+                    <span class="canada-flag">🇨🇦</span>
+                </div>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                </nav>
+                <div class="language-toggle">
+                    <a href="reconcile.html" class="lang-btn active" data-lang="en">EN</a>
+                    <span class="lang-divider">|</span>
+                    <a href="reconcile-fr.html" class="lang-btn" data-lang="fr">FR</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="reconcile-container">
+        <div class="container">
+            <h1>Reconcile Your Payments</h1>
+            <p>Connect your Harvest account to start reconciling your bank payments with invoices.</p>
+
+            <div id="authStatus" class="auth-status"></div>
+
+            <button id="connectBtn" class="btn btn-primary btn-large" style="display: none;">
+                Connect with Harvest
+            </button>
+
+            <button id="reconcileBtn" class="btn btn-primary btn-large" style="display: none;">
+                Reconcile
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-simple">
+                <div class="logo">
+                    <span class="logo-icon">💳</span>
+                    <span class="logo-text">SyncPay</span>
+                </div>
+                <p class="footer-tagline">&copy; 2025 SyncPay. Built in Canada for Canadians 🇨🇦</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Harvest OAuth Configuration
+        const HARVEST_CLIENT_ID = '25xJar4Dp7kWq_KwICldOuWt';
+        const REDIRECT_URI = window.location.origin + window.location.pathname;
+
+        // Fetch Harvest Account ID
+        async function getHarvestAccountId(accessToken) {
+            try {
+                const response = await fetch('https://api.harvestapp.com/v2/users/me', {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'User-Agent': 'SyncPay (daniel@danielrb.dev)'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('User data:', data);
+
+                if (data.id) {
+                  return data.id
+                }
+                // The account ID is in the accounts array
+                if (data.accounts && data.accounts.length > 0) {
+                    const accountId = data.accounts[0].id;
+                    sessionStorage.setItem('harvest_account_id', accountId);
+                    return accountId;
+                }
+
+                throw new Error('No Harvest accounts found');
+            } catch (error) {
+                console.error('Error fetching account ID:', error);
+                throw error;
+            }
+        }
+
+        // Fetch Harvest Invoices
+        async function fetchHarvestInvoices(accessToken, accountId) {
+            try {
+                const response = await fetch('https://api.harvestapp.com/v2/invoices', {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Harvest-Account-Id': accountId,
+                        'User-Agent': 'SyncPay (daniel@danielrb.dev)',
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('All Harvest Invoices:', data);
+                console.log(`Total invoices: ${data.invoices.length}`);
+
+                // Log each invoice with key details
+                data.invoices.forEach((invoice, index) => {
+                    console.log(`Invoice ${index + 1}:`, {
+                        id: invoice.id,
+                        number: invoice.number,
+                        client: invoice.client.name,
+                        amount: invoice.amount,
+                        due_amount: invoice.due_amount,
+                        state: invoice.state,
+                        issue_date: invoice.issue_date,
+                        due_date: invoice.due_date
+                    });
+                });
+
+                return data;
+            } catch (error) {
+                console.error('Error fetching invoices:', error);
+                throw error;
+            }
+        }
+
+        // Handle OAuth callback
+        async function handleOAuthCallback() {
+            // Try both hash (correct for implicit flow) and search params
+            const hashParams = new URLSearchParams(window.location.hash.substring(1));
+            const searchParams = new URLSearchParams(window.location.search.substring(1));
+            const params = hashParams.has('access_token') ? hashParams : searchParams;
+
+            if (params.has('access_token')) {
+                const accessToken = params.get('access_token');
+                const tokenType = params.get('token_type');
+                const expiresIn = params.get('expires_in');
+                const scope = params.get('scope');
+
+                // Store the access token
+                sessionStorage.setItem('harvest_access_token', accessToken);
+                sessionStorage.setItem('harvest_token_expiry', Date.now() + (expiresIn * 1000));
+
+                // Show success message
+                const statusDiv = document.getElementById('authStatus');
+                statusDiv.className = 'auth-status success';
+                statusDiv.textContent = 'Successfully connected to Harvest! Fetching invoices...';
+
+                // Clear the hash from URL
+                history.replaceState(null, null, window.location.pathname);
+
+                console.log('Access Token:', accessToken);
+                console.log('Expires in:', expiresIn, 'seconds');
+                console.log('Scope:', scope);
+
+                try {
+                    // Get account ID first
+                    const accountId = await getHarvestAccountId(accessToken);
+                    console.log('Harvest Account ID:', accountId);
+
+                    statusDiv.textContent = 'Successfully connected to Harvest!';
+
+                    // Update UI to show reconcile button
+                    updateUI();
+                } catch (error) {
+                    statusDiv.className = 'auth-status error';
+                    statusDiv.textContent = `Error fetching account: ${error.message}`;
+                }
+
+            } else if (params.has('error')) {
+                const error = params.get('error');
+                const errorDescription = params.get('error_description');
+
+                // Show error message
+                const statusDiv = document.getElementById('authStatus');
+                statusDiv.className = 'auth-status error';
+                statusDiv.textContent = `Authentication failed: ${errorDescription || error}`;
+
+                console.error('OAuth Error:', error, errorDescription);
+            }
+        }
+
+        function initiateHarvestAuth() {
+
+            const authUrl = `https://id.getharvest.com/oauth2/authorize?client_id=${HARVEST_CLIENT_ID}&response_type=token`;
+            window.location.href = authUrl;
+        }
+
+        // Check if we have a valid token
+        function hasValidToken() {
+            const token = sessionStorage.getItem('harvest_access_token');
+            const expiry = sessionStorage.getItem('harvest_token_expiry');
+          console.log('BOB: ', {token, expiry})
+
+            if (token && expiry && Date.now() < parseInt(expiry)) {
+                return true;
+            }
+            return false;
+        }
+
+        // Handle reconcile button click
+        async function handleReconcile() {
+            const statusDiv = document.getElementById('authStatus');
+            statusDiv.className = 'auth-status success';
+            statusDiv.textContent = 'Fetching invoices...';
+
+            const accessToken = sessionStorage.getItem('harvest_access_token');
+            const accountId = sessionStorage.getItem('harvest_account_id');
+
+            try {
+                if (!accountId) {
+                    const newAccountId = await getHarvestAccountId(accessToken);
+                    await fetchHarvestInvoices(accessToken, newAccountId);
+                } else {
+                    await fetchHarvestInvoices(accessToken, accountId);
+                }
+                statusDiv.textContent = 'Invoices loaded! Check console for details.';
+            } catch (error) {
+                statusDiv.className = 'auth-status error';
+                statusDiv.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        // Update UI based on authentication state
+        function updateUI() {
+            const connectBtn = document.getElementById('connectBtn');
+            const reconcileBtn = document.getElementById('reconcileBtn');
+            const statusDiv = document.getElementById('authStatus');
+
+            if (hasValidToken()) {
+                // Show reconcile button
+                connectBtn.style.display = 'none';
+                reconcileBtn.style.display = 'inline-block';
+                statusDiv.className = 'auth-status success';
+                statusDiv.textContent = 'Connected to Harvest. Click Reconcile to fetch invoices.';
+            } else {
+                // Show connect button
+                connectBtn.style.display = 'inline-block';
+                reconcileBtn.style.display = 'none';
+                statusDiv.style.display = 'none';
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Check for OAuth callback (hash or search params)
+            if (window.location.hash || window.location.search) {
+                await handleOAuthCallback();
+            }
+
+            // Update UI based on auth state
+            updateUI();
+
+            // Attach button events
+            document.getElementById('connectBtn').addEventListener('click', initiateHarvestAuth);
+            document.getElementById('reconcileBtn').addEventListener('click', handleReconcile);
+        });
+    </script>
+</body>
+</html>
